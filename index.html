@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualizador CSV - Web Worker</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Fuente Inter desde Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app-layout">
+        <!-- Encabezado Principal -->
+        <header class="app-header">
+            <div class="badge">Procesamiento Multihilo</div>
+            <h1>Visualizador de CSV</h1>
+            <p>Sube tus archivos grandes sin congelar la interfaz gracias a Web Workers.</p>
+        </header>
+
+        <!-- Tarjeta de Carga de Archivo -->
+        <main class="main-card">
+            <div class="drop-zone" id="dropZone">
+                <div class="icon-container">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+                        <polyline points="17 8 12 3 7 8"></polyline>
+                        <line x1="12" y1="3" x2="12" y2="15"></line>
+                    </svg>
+                </div>
+                <div class="drop-text">
+                    <span class="primary-text">Haz clic para seleccionar o arrastra un archivo</span>
+                    <span class="secondary-text">Formatos soportados: .csv</span>
+                </div>
+                <input type="file" id="csvFileInput" accept=".csv">
+            </div>
+
+            <!-- Indicador de Estado -->
+            <div id="statusBadge" class="status-badge status-idle">
+                <span class="status-dot"></span>
+                <span id="statusText">Esperando archivo...</span>
+            </div>
+
+            <!-- Contenedor de la Tabla -->
+            <div id="tableWrapper" class="table-wrapper hidden">
+                <div id="tableContainer" class="table-container"></div>
+            </div>
+        </main>
+    </div>
+
+    <script src="main.js"></script>
+</body>
+</html>
